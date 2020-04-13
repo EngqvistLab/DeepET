@@ -1,0 +1,34 @@
+epoch,97
+coef_det_k,0.9532048290318932
+dense1,512
+dense2,256
+dilation2,5
+dilation3,1
+dilation4,3
+dropout1,0.2513073371164808
+dropout2,0.08887461380375528
+epochs,500
+filters,512
+kernel_size1,21
+kernel_size21,9
+kernel_size22,7
+kernel_size23,9
+kernel_size31,3
+kernel_size32,11
+kernel_size33,21
+kernel_size41,3
+kernel_size42,21
+loss,37.842774408461096
+lr,0.0005
+mbatch,32
+min_delta,0.01
+patience,50
+pool_size1,2
+pool_size2,2
+pool_type_1,"""[m, a, x]"""
+pool_type_2,"""[m, a, x]"""
+res_num,3
+stride_23,3
+stride_33,2
+val_coef_det_k,0.7156785017212696
+val_loss,236.44944947248055
