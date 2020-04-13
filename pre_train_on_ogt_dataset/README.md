@@ -17,7 +17,7 @@ python pre_train_simple.py \
 --generator DataGenerator \
 --mbatch 128 \
 --lr 0.0001 \
---outdir ../results/pre_train_on_ogt_dataset/RES1_p_UniDist_B128_lr_1e-4
+--outdir ../results/pre_train_on_ogt_dataset/RES1_UniDist_D2512_1e4_B128
 
 ```
 
