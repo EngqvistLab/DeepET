@@ -7,7 +7,6 @@ from keras.optimizers import Adam
 
 import Preprocessing as Prep
 import my_callbacks
-import Save
 
 import os
 import argparse
@@ -42,6 +41,11 @@ def main():
                         type=int,
                         metavar='')
     
+    parser.add_argument('--tag', 
+                        help='tag for log file', 
+                        default='',
+                        metavar='')
+    
     parser.add_argument('--lr', 
                         help='learning rate', 
                         default=0,
@@ -74,7 +78,7 @@ def main():
     print(args)
     
     if not os.path.exists(args.outdir): os.mkdir(args.outdir)
-    outlog = os.path.join(args.outdir,'train_val_test_history.csv')
+    outlog = os.path.join(args.outdir,'train_val_test_history{0}.csv'.format(args.tag))
     
     # 1. load data
     # 1.1 load parameters
@@ -110,7 +114,7 @@ def main():
     # 1.5 callbacks
     reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=10, min_lr=0.0000001)
     e_stop = EarlyStopping(monitor='val_loss', min_delta=float(p['min_delta']), patience=int(p['patience']))
-    best_checkpoint = ModelCheckpoint(filepath=os.path.join(args.outdir,'bestmodel.h5'), save_best_only=True)
+    best_checkpoint = ModelCheckpoint(filepath=os.path.join(args.outdir,'bestmodel{0}.h5'.format(args.tag)), save_best_only=True)
     #last_checkpoint = ModelCheckpoint(filepath=os.path.join(args.outdir,'lastmodel.h5'), save_best_only=False)
     #tcb = my_callbacks.TestCallback((X_test,Y_test))
     csvloger = my_callbacks.MyCSVLogger(outlog)

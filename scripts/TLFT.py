@@ -71,6 +71,12 @@ def main():
                         default='',
                         metavar='')
     
+    parser.add_argument('--patience', 
+                        help='patience', 
+                        default=200,
+                        type=int,
+                        metavar='')
+    
     parser.add_argument('--outdir',    
                         help='Directory for output results, including model and logfiles',
                         metavar='')
@@ -95,7 +101,7 @@ def main():
     
     # Set callbacks
     reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=10, min_lr=0.0000001)
-    e_stop = EarlyStopping(monitor='val_loss', min_delta=float(p['min_delta']), patience=200)
+    e_stop = EarlyStopping(monitor='val_loss', min_delta=float(p['min_delta']), patience=args.patience)
     tcb = my_callbacks.TestCallback((X_test,Y_test))
     csvloger = my_callbacks.MyCSVLogger(outlog,tcb)
     
